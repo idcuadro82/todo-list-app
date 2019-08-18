@@ -1,0 +1,16 @@
+<li [ngClass]="{'completed': todo.completed, 'editing': editingText }">
+  <div class="view">
+    <input class="toggle"
+           type="checkbox"
+           [formControl]="checkCompletedControl"
+           [checked]="todo.completed">
+    <label (dblclick)="startEdition()">{{ todo.text }}</label>
+    <button class="destroy" (click)="deleteTodo()"></button>
+  </div>
+  <input class="edit"
+         [value]="todo.text"
+         [formControl]="templateTextControl"
+         (keyup.enter)="endEdition($event);"
+         (blur)="endEdition($event)"
+         #editTextInput>
+</li>
